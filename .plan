@@ -1,0 +1,47 @@
+Architecture plan for issues #1-#11
+
+Project shape
+- Single-page Vite + React + TypeScript app.
+- Keep the app intentionally small: one top-level page with a centered clock experience.
+- Use Tailwind for layout, spacing, typography, color tokens, and dark-mode variants.
+- Build static assets with Vite and serve them from Nginx in production.
+
+Planned file organization
+- `src/main.tsx`: app bootstrap.
+- `src/App.tsx`: page shell and composition root.
+- `src/index.css`: Tailwind directives plus global base styles.
+- `src/hooks/useClock.ts`: clock state and ticking behavior.
+- `src/components/Clock.tsx`: presentational clock UI for time and date.
+- `src/lib/formatDate.ts`: date/time formatting helpers if formatting logic grows beyond the hook.
+- `public/`: static assets if needed later.
+- `Dockerfile`: multi-stage build using Node for build and Nginx for runtime.
+- `nginx.conf`: SPA fallback and static serving config.
+- `.env.example`: documented env surface, even if initially empty/minimal.
+- `README.md`: setup, development, architecture summary, Docker usage.
+
+Shared types and interfaces
+- Prefer native `Date` in hook state until requirements justify custom domain types.
+- If component props become non-trivial, define `ClockProps` alongside `Clock.tsx`.
+- Keep formatting outputs as plain strings returned from the hook or helper layer.
+
+Issue dependency order
+1. `#1` Vite + React + TypeScript scaffold. Foundation for all frontend work.
+2. `#2` Tailwind CSS. Needed before final layout/theme styling.
+3. `#3` ESLint + Prettier. Establish code quality before feature work.
+4. `#4` `.env.example` and README baseline. Documents local usage early.
+5. `#5` `useClock` hook. Core live state and interval behavior.
+6. `#6` `Clock` component. Consumes `useClock`.
+7. `#7` Responsive centered layout. Wraps the `Clock` in final page structure.
+8. `#8` OS-preference light/dark theme. Extends Tailwind/global styles and layout.
+9. `#9` Multi-stage Dockerfile. Depends on finalized build tooling.
+10. `#10` Nginx SPA config. Paired with Docker runtime image.
+11. `#11` Docker README docs. Depends on Docker and Nginx details.
+
+Key design decisions
+- Use React function components and hooks only; no state library is needed.
+- Keep `useClock` responsible for timing and formatted values, so `Clock` stays mostly presentational.
+- Use `Intl.DateTimeFormat` for time/date formatting to avoid extra dependencies.
+- Use a one-second interval aligned with client time; cleanup must be explicit to avoid leaks.
+- Use Tailwind `darkMode: "media"` so OS preference works without manual theme state.
+- Keep the initial env surface minimal; avoid speculative runtime configuration.
+- Favor a simple SPA served from Nginx with `try_files` fallback to `index.html`.
