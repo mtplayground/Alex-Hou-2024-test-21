@@ -1,3 +1,5 @@
+const appTitle = import.meta.env.VITE_APP_TITLE?.trim() || 'Alex Hou Clock'
+
 function App() {
   return (
     <main className="grid min-h-screen place-items-center p-8">
@@ -12,14 +14,16 @@ function App() {
           id="app-title"
           className="mt-3 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl"
         >
-          Vite + React + TypeScript initialized
+          {appTitle}
         </h1>
         <p className="mt-4 text-base text-slate-700">
-          The project scaffold is in place and ready for the clock features,
-          styling, and containerization work in the remaining issues.
+          The Vite, React, and TypeScript scaffold is in place and ready for the
+          clock features, styling, and containerization work in the remaining
+          issues.
         </p>
         <div className="mt-6 inline-flex rounded-full bg-sky-100 px-4 py-2 text-sm font-medium text-sky-700">
-          Sample utility classes are rendering through Tailwind CSS.
+          Set <code className="font-semibold">VITE_APP_TITLE</code> in{' '}
+          <code className="font-semibold">.env</code> to customize the heading.
         </div>
       </section>
     </main>
