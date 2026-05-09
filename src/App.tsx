@@ -4,31 +4,33 @@ const appTitle = import.meta.env.VITE_APP_TITLE?.trim() || 'Alex Hou Clock'
 
 function App() {
   return (
-    <main className="grid min-h-screen place-items-center p-8">
+    <main className="flex min-h-screen items-center justify-center px-4 py-8 sm:px-6 lg:px-8">
       <section
-        className="w-full max-w-2xl rounded-2xl border border-slate-200 bg-white p-8 shadow-xl shadow-slate-900/5"
+        className="w-full max-w-4xl rounded-[2rem] border border-slate-200 bg-white/90 px-5 py-8 shadow-2xl shadow-slate-900/10 backdrop-blur sm:px-8 sm:py-10 lg:px-12 lg:py-12"
         aria-labelledby="app-title"
       >
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-600">
-          Tailwind Ready
+        <p className="text-center text-xs font-semibold uppercase tracking-[0.28em] text-sky-600 sm:text-sm">
+          Live Clock
         </p>
         <h1
           id="app-title"
-          className="mt-3 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl"
+          className="mx-auto mt-4 max-w-2xl text-center text-[clamp(2.5rem,8vw,5.5rem)] font-bold leading-none tracking-[-0.06em] text-slate-900"
         >
           {appTitle}
         </h1>
-        <p className="mt-4 text-base text-slate-700">
+        <p className="mx-auto mt-5 max-w-2xl text-center text-[clamp(1rem,2.8vw,1.2rem)] text-slate-600">
           A live clock powered by a custom React hook and formatted with the
           browser&apos;s internationalization APIs.
         </p>
-        <div className="mt-6">
+        <div className="mx-auto mt-8 max-w-2xl">
           <Clock />
         </div>
-        <div className="mt-6 inline-flex rounded-full bg-sky-100 px-4 py-2 text-sm font-medium text-sky-700">
-          Set <code className="font-semibold">VITE_APP_TITLE</code> in{' '}
-          <code className="font-semibold">.env</code> to customize the title.
-        </div>
+        <p className="mt-6 text-center text-sm text-slate-500 sm:text-base">
+          Set{' '}
+          <code className="font-semibold text-slate-700">VITE_APP_TITLE</code>{' '}
+          in <code className="font-semibold text-slate-700">.env</code> to
+          customize the title.
+        </p>
       </section>
     </main>
   )
