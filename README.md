@@ -53,6 +53,24 @@ The preview server is also configured to listen on `0.0.0.0:8080`.
 npm run preview -- --host 0.0.0.0 --port 8080
 ```
 
+## Docker
+
+The production image exposes port `8080`.
+
+Build the image:
+
+```bash
+docker build -t alex-hou-2024-test-21 .
+```
+
+Run the container:
+
+```bash
+docker run --rm -p 8080:8080 alex-hou-2024-test-21
+```
+
+After the container starts, the app is available at `http://localhost:8080`.
+
 ## Quality checks
 
 ```bash
