@@ -4,6 +4,16 @@
 
 @layer base {
   :root {
+    color-scheme: light;
+    --color-page: 241 245 249;
+    --color-panel: 255 255 255;
+    --color-panel-muted: 248 250 252;
+    --color-border: 226 232 240;
+    --color-text: 15 23 42;
+    --color-text-muted: 71 85 105;
+    --color-text-soft: 100 116 139;
+    --color-accent: 2 132 199;
+    --color-accent-soft: 224 242 254;
     font-family:
       Inter,
       ui-sans-serif,
@@ -20,6 +30,21 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+      --color-page: 2 6 23;
+      --color-panel: 15 23 42;
+      --color-panel-muted: 30 41 59;
+      --color-border: 51 65 85;
+      --color-text: 241 245 249;
+      --color-text-muted: 203 213 225;
+      --color-text-soft: 148 163 184;
+      --color-accent: 125 211 252;
+      --color-accent-soft: 12 74 110;
+    }
+  }
+
   * {
     box-sizing: border-box;
   }
@@ -31,6 +56,6 @@
   }
 
   body {
-    @apply m-0 bg-slate-100 text-slate-900;
+    @apply m-0 bg-[rgb(var(--color-page))] text-[rgb(var(--color-text))];
   }
 }
