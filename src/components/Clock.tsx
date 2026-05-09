@@ -21,20 +21,20 @@ export function Clock() {
 
   return (
     <section
-      className="rounded-[1.75rem] border border-slate-200 bg-slate-50 px-4 py-6 text-center shadow-inner shadow-white/80 sm:px-6 sm:py-8"
+      className="rounded-[1.75rem] border border-[rgb(var(--color-border))] bg-[rgb(var(--color-panel-muted))] px-4 py-6 text-center shadow-inner shadow-white/10 sm:px-6 sm:py-8"
       aria-label="Current date and time"
     >
-      <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sky-600 sm:text-sm">
+      <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[rgb(var(--color-accent))] sm:text-sm">
         Current Time
       </p>
       <time
-        className="mt-4 block font-mono text-[clamp(2.75rem,12vw,6.5rem)] font-semibold leading-none tracking-[-0.06em] text-slate-950"
+        className="mt-4 block font-mono text-[clamp(2.75rem,12vw,6.5rem)] font-semibold leading-none tracking-[-0.06em] text-[rgb(var(--color-text))]"
         dateTime={currentDate.toISOString()}
       >
         {time}
       </time>
       <time
-        className="mt-4 block text-[clamp(1rem,3vw,1.35rem)] text-slate-600"
+        className="mt-4 block text-[clamp(1rem,3vw,1.35rem)] text-[rgb(var(--color-text-muted))]"
         dateTime={currentDate.toISOString().slice(0, 10)}
       >
         {date}
